@@ -229,8 +229,9 @@ Register & Record First Wash
 <script src="app.js"></script>
 
 <script>
+document.getElementById("t1").addEventListener("click", function(e) {
 
-function staffLogin(){
+e.preventDefault();
 
 let password = prompt("Enter Staff Password");
 
@@ -242,12 +243,14 @@ document.getElementById("p1").classList.add("active");
 document.getElementById("t0").classList.remove("active");
 document.getElementById("t1").classList.add("active");
 
-}
-else{
+}else{
 
 alert("Access Denied");
 
 }
+
+});
+</script>
 
 }
 

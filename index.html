@@ -157,7 +157,8 @@ color:var(--muted);
 
 <div class="tabs">
 <button class="tab active" id="t0">🔍 Check Membership</button>
-<button class="tab" id="t1" onclick="staffLogin()">🔧 Staff Panel</button>
+<button class="tab" onclick="staffLogin()">🔒 Staff Login</button>
+<button class="tab" id="t1" style="display:none;">🔧 Staff Panel</button>
 </div>
 
 <!-- CUSTOMER PANEL -->
@@ -229,28 +230,21 @@ Register & Record First Wash
 <script src="app.js"></script>
 
 <script>
-document.getElementById("t1").addEventListener("click", function(e) {
 
-e.preventDefault();
+function staffLogin(){
 
-let password = prompt("Enter Staff Password");
+let pass = prompt("Enter Staff Password");
 
-if(password === "shadow123"){
+if(pass === "shadow123"){
 
-document.getElementById("p0").classList.remove("active");
-document.getElementById("p1").classList.add("active");
-
-document.getElementById("t0").classList.remove("active");
-document.getElementById("t1").classList.add("active");
+document.getElementById("t1").style.display = "block";
+document.getElementById("t1").click();
 
 }else{
 
 alert("Access Denied");
 
 }
-
-});
-</script>
 
 }
 

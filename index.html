@@ -151,17 +151,17 @@ color:var(--muted);
 <div class="wrap">
 
 <div class="header">
-<img id="logo" src="" alt="Shadows Car Wash">
+<img id="logo" alt="Shadows Car Wash">
 <p class="tagline">Membership Portal</p>
 </div>
 
 <div class="tabs">
 <button class="tab active" id="t0">🔍 Check Membership</button>
-<button class="tab" onclick="staffLogin()">🔒 Staff Login</button>
-<button class="tab" id="t1" style="display:none;">🔧 Staff Panel</button>
+<button class="tab" id="t1" onclick="return checkStaffAccess()">🔧 Staff Panel</button>
 </div>
 
 <!-- CUSTOMER PANEL -->
+
 <div class="panel active" id="p0">
 
 <div class="card">
@@ -181,9 +181,11 @@ color:var(--muted);
 </div>
 
 <!-- STAFF PANEL -->
+
 <div class="panel" id="p1">
 
 <div class="card">
+
 <div class="ctitle">Record a Wash</div>
 
 <div class="field">
@@ -202,7 +204,7 @@ Add Wash + Save to Sheet
 <div class="ctitle">Register New Customer</div>
 
 <div class="field">
-<label>Customer Name</label>
+<label>Full Name</label>
 <input id="an" type="text">
 </div>
 
@@ -217,7 +219,7 @@ Add Wash + Save to Sheet
 </div>
 
 <button class="btn bg" id="arbtn">
-Register & Record First Wash
+Register & Record 1st Wash
 </button>
 
 </div>
@@ -231,20 +233,16 @@ Register & Record First Wash
 
 <script>
 
-function staffLogin(){
+function checkStaffAccess(){
 
 let pass = prompt("Enter Staff Password");
 
 if(pass === "shadow123"){
-
-document.getElementById("t1").style.display = "block";
-document.getElementById("t1").click();
-
-}else{
+return true;
+}
 
 alert("Access Denied");
-
-}
+return false;
 
 }
 

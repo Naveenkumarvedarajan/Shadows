@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html>
 <head>
 <meta charset="UTF-8">
@@ -26,7 +27,7 @@ margin-bottom:20px;
 }
 
 button{
-padding:10px;
+padding:10px 15px;
 border:none;
 border-radius:6px;
 cursor:pointer;
@@ -66,23 +67,25 @@ display:none;
 
 <h2>Shadows Car Wash</h2>
 
-<button onclick="showCustomer()">Check Membership</button>
-<button onclick="staffLogin()">Staff Panel</button>
+<button onclick="showCustomer()">Check Membership</button> <button onclick="staffLogin()">Staff Panel</button>
+
+<!-- CUSTOMER PANEL -->
 
 <div id="customerPanel" class="card">
 
 <h3>Check Membership</h3>
 
-<label>Vehicle Number</label>
-<input id="cv">
+<label>Vehicle Number</label> <input id="cv" placeholder="Enter Vehicle Number">
 
 <button class="primary" onclick="checkMembership()">
-Check
+Check Membership
 </button>
 
 <div id="result"></div>
 
 </div>
+
+<!-- STAFF PANEL -->
 
 <div id="staffPanel" class="hidden">
 
@@ -102,9 +105,9 @@ Add Wash
 
 <h3>Register Customer</h3>
 
-<input id="name" placeholder="Name">
+<input id="name" placeholder="Customer Name">
 <input id="vehicle" placeholder="Vehicle Number">
-<input id="phone" placeholder="Phone">
+<input id="phone" placeholder="Phone Number">
 
 <button class="gold" onclick="registerCustomer()">
 Register Customer

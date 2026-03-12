@@ -1,225 +1,113 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Shadows Car Wash</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-
 <style>
-:root{
---bg:#0a0a0f;
---surface:#13131c;
---card:#1a1a27;
---border:#2a2a40;
---accent:#00d4ff;
---accent2:#0099cc;
---gold:#f0c040;
---text:#e8e8f0;
---muted:#6b6b88;
---success:#00e676;
---danger:#ff5252;
-}
-
-*{margin:0;padding:0;box-sizing:border-box;}
 
 body{
-font-family:"DM Sans",sans-serif;
-background:var(--bg);
-color:var(--text);
-min-height:100vh;
+font-family:Arial;
+background:#0f172a;
+color:white;
+padding:20px;
 }
 
-.wrap{
-max-width:680px;
+.container{
+max-width:600px;
 margin:auto;
-padding:36px 18px 80px;
 }
 
-.header{text-align:center;margin-bottom:32px;}
-
-#logo{
-width:140px;
-height:140px;
-border-radius:50%;
-margin-bottom:8px;
-}
-
-.tagline{
-font-size:11px;
-color:var(--muted);
-letter-spacing:3px;
-text-transform:uppercase;
-}
-
-.tabs{
-display:flex;
-gap:6px;
-background:var(--surface);
-border:1px solid var(--border);
-border-radius:14px;
-padding:5px;
+.card{
+background:#1e293b;
+padding:20px;
+border-radius:10px;
 margin-bottom:20px;
 }
 
-.tab{
-flex:1;
+button{
 padding:10px;
 border:none;
-border-radius:10px;
-font-size:13px;
-font-weight:600;
+border-radius:6px;
 cursor:pointer;
-color:var(--muted);
-background:transparent;
+margin-top:10px;
 }
 
-.tab.active{
-background:var(--card);
-color:var(--accent);
+.primary{
+background:#06b6d4;
+color:black;
 }
 
-.panel{display:none;}
-.panel.active{display:block;}
-
-.card{
-background:var(--surface);
-border:1px solid var(--border);
-border-radius:18px;
-padding:24px;
-margin-bottom:16px;
+.gold{
+background:#f59e0b;
+color:black;
 }
 
-.ctitle{
-font-family:"Bebas Neue";
-font-size:18px;
-letter-spacing:2px;
-color:var(--accent);
-margin-bottom:14px;
-}
-
-.field{margin-bottom:13px;}
-
-.field label{
-font-size:11px;
-color:var(--muted);
-display:block;
-margin-bottom:5px;
-}
-
-.field input{
+input{
 width:100%;
-background:var(--card);
-border:1px solid var(--border);
-border-radius:9px;
-padding:11px;
-color:var(--text);
-}
-
-.btn{
-width:100%;
-padding:13px;
-border-radius:11px;
+padding:10px;
+margin-top:6px;
+margin-bottom:10px;
+border-radius:6px;
 border:none;
-font-size:14px;
-font-weight:700;
-cursor:pointer;
-margin-top:5px;
 }
 
-.bp{
-background:linear-gradient(135deg,var(--accent),var(--accent2));
-color:#000;
+.hidden{
+display:none;
 }
 
-.bg{
-background:linear-gradient(135deg,var(--gold),#d4900a);
-color:#000;
-}
-
-.bt{
-background:transparent;
-border:1px solid var(--border);
-color:var(--muted);
-}
 </style>
+
 </head>
 
 <body>
 
-<div class="wrap">
+<div class="container">
 
-<div class="header">
-<img id="logo" alt="Shadows Car Wash">
-<p class="tagline">Membership Portal</p>
-</div>
+<h2>Shadows Car Wash</h2>
 
-<div class="tabs">
-<button class="tab active" id="t0">🔍 Check Membership</button>
-<button class="tab" id="t1" onclick="return checkStaffAccess()">🔧 Staff Panel</button>
-</div>
+<button onclick="showCustomer()">Check Membership</button>
+<button onclick="staffLogin()">Staff Panel</button>
 
-<!-- CUSTOMER PANEL -->
+<div id="customerPanel" class="card">
 
-<div class="panel active" id="p0">
+<h3>Check Membership</h3>
 
-<div class="card">
-<div class="ctitle">Check Your Wash Count</div>
-
-<div class="field">
 <label>Vehicle Number</label>
-<input id="cv" type="text" placeholder="TN01AB1234">
+<input id="cv">
+
+<button class="primary" onclick="checkMembership()">
+Check
+</button>
+
+<div id="result"></div>
+
 </div>
 
-<button class="btn bp" id="cbtn">Check Membership</button>
-
-</div>
-
-<div id="cres"></div>
-
-</div>
-
-<!-- STAFF PANEL -->
-
-<div class="panel" id="p1">
+<div id="staffPanel" class="hidden">
 
 <div class="card">
 
-<div class="ctitle">Record a Wash</div>
+<h3>Add Wash</h3>
 
-<div class="field">
-<label>Vehicle Number</label>
-<input id="av" type="text">
-</div>
+<input id="av" placeholder="Vehicle Number">
 
-<button class="btn bp" id="awbtn">
-Add Wash + Save to Sheet
+<button class="primary" onclick="addWash()">
+Add Wash
 </button>
 
 </div>
 
 <div class="card">
 
-<div class="ctitle">Register New Customer</div>
+<h3>Register Customer</h3>
 
-<div class="field">
-<label>Full Name</label>
-<input id="an" type="text">
-</div>
+<input id="name" placeholder="Name">
+<input id="vehicle" placeholder="Vehicle Number">
+<input id="phone" placeholder="Phone">
 
-<div class="field">
-<label>Vehicle Number</label>
-<input id="anv" type="text">
-</div>
-
-<div class="field">
-<label>Phone</label>
-<input id="aph" type="text">
-</div>
-
-<button class="btn bg" id="arbtn">
-Register & Record 1st Wash
+<button class="gold" onclick="registerCustomer()">
+Register Customer
 </button>
 
 </div>
@@ -228,21 +116,23 @@ Register & Record 1st Wash
 
 </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 <script src="app.js"></script>
 
 <script>
 
-function checkStaffAccess(){
-
-let pass = prompt("Enter Staff Password");
-
-if(pass === "shadow123"){
-return true;
+function showCustomer(){
+document.getElementById("staffPanel").classList.add("hidden")
 }
 
-alert("Access Denied");
-return false;
+function staffLogin(){
+
+let password = prompt("Enter Staff Password")
+
+if(password === "shadow123"){
+document.getElementById("staffPanel").classList.remove("hidden")
+}else{
+alert("Access Denied")
+}
 
 }
 
